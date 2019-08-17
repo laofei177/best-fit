@@ -1,22 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# author: Sanger Steel
+# In[1]:
 
 
 import numpy as np
 import numpy.polynomial.polynomial as npoly
 from scipy.optimize import curve_fit, differential_evolution
-import matplotlib.pyplot as plt
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
 import warnings
 import numpy.polynomial.polynomial as poly
-import seaborn 
 
 
+# In[2]:
 
 
 def compute_weighted_uncertainty(sys_error,error):
@@ -24,6 +19,7 @@ def compute_weighted_uncertainty(sys_error,error):
     return weighted_uncertainty
 
 
+# In[3]:
 
 
 def weights(compute_weighted_uncertainty, args):
@@ -31,11 +27,11 @@ def weights(compute_weighted_uncertainty, args):
     return weights
 
 
+# In[4]:
 
 
 def segmentedRegression_1break(xData,yData):
         global piece1_params
-        global ans_one
         global BIC_segReg_one
         global AIC_segReg_one
         def func(xVals,model_break,slopeA,slopeB,offsetA,offsetB):
@@ -96,11 +92,11 @@ def segmentedRegression_1break(xData,yData):
         
 
 
+# In[5]:
 
 
 def segmentedRegression_2break(xData,yData):
     global piece2_params
-    global ans
     global BIC_segReg_two
     global AIC_segReg_two
     def func(xVals,break1,break2,slope1,offset1,slope_mid,offset_mid,slope2,offset2):
@@ -168,11 +164,11 @@ def segmentedRegression_2break(xData,yData):
     
 
 
+# In[6]:
 
 
 def segmentedRegression_3break(xData,yData):
     global piece3_params
-    global ans_three
     global BIC_segReg_three
     global AIC_segReg_three
     def func(xVals,break1,break2,break3,slope1,offset1,slope2,offset2,slope3,offset3,slope4,offset4):
@@ -243,6 +239,7 @@ def segmentedRegression_3break(xData,yData):
 
 
 
+# In[7]:
 
 
 def compute_BIC(yData,model,variables):
@@ -251,7 +248,7 @@ def compute_BIC(yData,model,variables):
     return np.log(len(yData))*variables+len(yData)*np.log(SSE/len(yData))
 
 
-
+# In[8]:
 
 
 def compute_AIC(yData,model,variables):
@@ -260,7 +257,7 @@ def compute_AIC(yData,model,variables):
     return 2*variables + len(yData) * np.log(SSE)
 
 
-
+# In[9]:
 
 
 def p1(xData,a0,a1):
@@ -277,7 +274,7 @@ def p6(xData,a0,a1,a2,a3,a4,a5,a6):
     return a0 + a1 * xData + a2 * xData**2 + a3 * xData**3 + a4 * xData**4 + a5 * xData**5 + a6 * xData**6
 
 
-
+# In[10]:
 
 
 def func_1break(xVals,model_break,slopeA,slopeB,offsetA,offsetB):
@@ -316,7 +313,7 @@ def func_3break(xVals,break1,break2,break3,slope1,offset1,slope2,offset2,slope3,
             return returnArray
 
 
-
+# In[11]:
 
 
 def polynom_best_fit(xData,yData):
@@ -442,7 +439,7 @@ def polynom_best_fit(xData,yData):
                         return min(AICS)
 
 
-
+# In[12]:
 
 
 def best_fit(x,y,method, error = None, **kwargs):
@@ -601,10 +598,6 @@ def best_fit(x,y,method, error = None, **kwargs):
                         
         else:
             raise ValueError('More parameters than datapoints for all fits.')
-
-
-
-
 
 
 

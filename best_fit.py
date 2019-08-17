@@ -4,6 +4,7 @@
 #author: Sanger Steel
 
 
+
 import numpy as np
 import numpy.polynomial.polynomial as npoly
 from scipy.optimize import curve_fit, differential_evolution
@@ -250,14 +251,13 @@ def compute_BIC(yData,model,variables):
 
 
 
-
 def compute_AIC(yData,model,variables):
     residual=yData-model
     SSE=np.sum(residual**2)
     return 2*variables + len(yData) * np.log(SSE)
 
 
-# In[9]:
+
 
 
 def p1(xData,a0,a1):

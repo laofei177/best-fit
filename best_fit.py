@@ -248,7 +248,7 @@ def compute_BIC(yData,model,variables):
     return np.log(len(yData))*variables+len(yData)*np.log(SSE/len(yData))
 
 
-# In[8]:
+
 
 
 def compute_AIC(yData,model,variables):

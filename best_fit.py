@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+#author: Sanger Steel
+
 
 
 import numpy as np
@@ -11,7 +12,7 @@ import warnings
 import numpy.polynomial.polynomial as poly
 
 
-# In[2]:
+
 
 
 def compute_weighted_uncertainty(sys_error,error):
@@ -19,7 +20,7 @@ def compute_weighted_uncertainty(sys_error,error):
     return weighted_uncertainty
 
 
-# In[3]:
+
 
 
 def weights(compute_weighted_uncertainty, args):
@@ -27,7 +28,7 @@ def weights(compute_weighted_uncertainty, args):
     return weights
 
 
-# In[4]:
+
 
 
 def segmentedRegression_1break(xData,yData):
@@ -164,7 +165,7 @@ def segmentedRegression_2break(xData,yData):
     
 
 
-# In[6]:
+
 
 
 def segmentedRegression_3break(xData,yData):
@@ -239,7 +240,7 @@ def segmentedRegression_3break(xData,yData):
 
 
 
-# In[7]:
+
 
 
 def compute_BIC(yData,model,variables):
@@ -257,7 +258,7 @@ def compute_AIC(yData,model,variables):
     return 2*variables + len(yData) * np.log(SSE)
 
 
-# In[9]:
+
 
 
 def p1(xData,a0,a1):
@@ -274,7 +275,7 @@ def p6(xData,a0,a1,a2,a3,a4,a5,a6):
     return a0 + a1 * xData + a2 * xData**2 + a3 * xData**3 + a4 * xData**4 + a5 * xData**5 + a6 * xData**6
 
 
-# In[10]:
+
 
 
 def func_1break(xVals,model_break,slopeA,slopeB,offsetA,offsetB):
@@ -313,7 +314,7 @@ def func_3break(xVals,break1,break2,break3,slope1,offset1,slope2,offset2,slope3,
             return returnArray
 
 
-# In[11]:
+
 
 
 def polynom_best_fit(xData,yData):
@@ -439,7 +440,7 @@ def polynom_best_fit(xData,yData):
                         return min(AICS)
 
 
-# In[12]:
+
 
 
 def best_fit(x,y,method, error = None, **kwargs):

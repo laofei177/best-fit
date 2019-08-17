@@ -93,7 +93,6 @@ def segmentedRegression_1break(xData,yData):
         
 
 
-# In[5]:
 
 
 def segmentedRegression_2break(xData,yData):
